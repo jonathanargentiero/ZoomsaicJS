@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zoomsaic JS - jQuery Zoom Mosaic plugin</title>        
+        <meta name="description" content="Lightweight jQuery plugin for zoom + mosaic animation"/>
+        <meta name="keywords" content="Zoomsaic,jQuery plugin,zoom,mosaic,javascript">
+        <meta name="author" content="Jonathan Argentiero">
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta property="og:title" content="Zoomsaic JS - jQuery Zoom Mosaic plugin" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="http://www.jonathanargentiero.com/jonathanargentierodotcom.png" />
+        <meta property="og:url" content="http://www.jonathanargentiero.com/zoomsaic/" />
+        <meta property="og:site_name" content="Zoomsaic JS " />
+        <meta property="og:description" content="Lightweight jQuery plugin for zoom + mosaic animation" />
+
+        <!-- JQUERY FROM GOOGLE -->
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <!-- JQUERY EASING NOT REQUIRED BUT SUGGESTED -->
+        <script src="js/jquery.easing.min.js" type="text/javascript"></script>
+        <!-- PLUGIN JS -->
+        <script src="js/jquery.zoomsaic.js" type="text/javascript"></script>
+        
+        <!-- PLUGIN CSS -->
+        <link href="css/zoomsaic.css" rel="stylesheet" type="text/css" media="screen" />
+        <!-- DEMO CSS NOT REQUIRED -->
+        <link href="css/demo.css" rel="stylesheet" type="text/css" media="screen" />
+          
+        <link rel="shortcut icon" href="/favicon.ico"/>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-34559216-2', 'jonathanargentiero.com');
+          ga('send', 'pageview');
+        
+        </script>
+    </head>
+    <body>
+        <section>
+            <article>
+                <h1>Zoomsaic JS</h1>
+                <h2>Lightweight <span class="red">jQuery</span> plugin for zoom + mosaic animation</h2>
+                <hr>
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>
+                        <span class="red">jQuery 1.8.x or newer</span> (earlier versions compatibility is just not tested)
+                    </li>
+                    <li>
+                        <span class="red">zoomsaic.js</span> (or minified) and <span class="red">zoomsaic.css</span> (or minified)
+                    </li>
+                    <li>
+                        one cup of coffee
+                    </li>
+                    <li>
+                        (OPTIONAL) <span class="red">jQuery easing</span>
+                    </li>
+                </ul>
+                <hr>
+                <h3>Guide</h3>
+                <p>Zoomsaic JS is a simple jQuery plugin useful to create fancy galleries with minimal effort.<br/>
+                The plugin could be integrated in any platform, as far as your experience goes, and it's composed by three parts:</p>
+                <h4>1. HTML</h4>
+                <p>create as much as zoomsaic-elements as you want:</p>
+                <code>
+                <pre>
+                <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"zoomsaic"</span><span style='color:#a65700; '>></span>
+                    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"zoomsaic-element"</span><span style='color:#a65700; '>></span>
+                        <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"zoomsaic-before"</span><span style='color:#a65700; '>></span>                                                                        
+                            ... your before hover part ...
+                        <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>
+                        <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"zoomsaic-after"</span><span style='color:#274796; '> </span><span style='color:#074726; '>style</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"</span><span style='color:#bb7977; font-weight:bold; '>display</span><span style='color:#808030; '>:</span><span style='color:#074726; '>none</span><span style='color:#800080; '>;</span><span style='color:#0000e6; '>"</span><span style='color:#a65700; '>></span>
+                            ... your after hover part ...
+                        <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>
+                    <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>
+                    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"zoomsaic-element"</span><span style='color:#a65700; '>></span> ... <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>
+                    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#274796; '> </span><span style='color:#074726; '>class</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"zoomsaic-element"</span><span style='color:#a65700; '>></span> ... <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>
+                <span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>div</span><span style='color:#a65700; '>></span>
+                </pre>
+                </code>
+                <h4>2. Javascript</h4>
+                <p>call the zoomsaic invoker with desired options:</p>
+                <code>
+                <pre>
+                <span style='color:#808030; '>&lt;</span>script type<span style='color:#808030; '>=</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>text/javascript</span><span style='color:#800000; '>"</span><span style='color:#808030; '>></span>
+                    $<span style='color:#808030; '>(</span>document<span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>ready<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>function</span><span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>{</span>    
+                        $<span style='color:#808030; '>(</span><span style='color:#0000e6; '>'#zoomsaic_demo_1'</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>zoomsaic<span style='color:#808030; '>(</span><span style='color:#800080; '>{</span>
+                            columns <span style='color:#800080; '>:</span> <span style='color:#008c00; '>4</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// (REQUIRED) columns per page</span>
+                            width <span style='color:#800080; '>:</span> <span style='color:#008c00; '>780</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// (REQUIRED) container width</span>
+                            height <span style='color:#800080; '>:</span> <span style='color:#008c00; '>195</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// container height</span>
+                            elements_per_page <span style='color:#800080; '>:</span> <span style='color:#008c00; '>4</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// total elements per page</span>
+                            box_width <span style='color:#800080; '>:</span> <span style='color:#008c00; '>195</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// before zoom box width</span>
+                            box_height <span style='color:#800080; '>:</span> <span style='color:#008c00; '>195</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// before zoom box height</span>
+                            max_box_width <span style='color:#800080; '>:</span> <span style='color:#008c00; '>260</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// after zoom box width</span>
+                            max_box_height <span style='color:#800080; '>:</span> <span style='color:#008c00; '>260</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// after zoom box height</span>
+                            easein <span style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>linear</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// easing of the zoom animation, supports additional effects from jquery easing/jquery ui</span>
+                            easout <span style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>linear</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// easing of the zoom animation, supports additional effects from jquery easing/jquery ui</span>
+                            pagination <span style='color:#800080; '>:</span> <span style='color:#0f4d75; '>true</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// pagination enabled / disabled</span>
+                            navigator <span style='color:#800080; '>:</span> <span style='color:#0f4d75; '>true</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// pager enabled / disabled</span>
+                            direction<span style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>left</span><span style='color:#800000; '>"</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// direction of the pager animation</span>
+                            easepage <span style='color:#800080; '>:</span> <span style='color:#800000; '>"</span><span style='color:#0000e6; '>easeInExpo</span><span style='color:#800000; '>"</span> <span style='color:#696969; '>// easing of the pager animation, supports additional effects from jquery easing/jquery ui</span>
+                        <span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                        $<span style='color:#808030; '>(</span><span style='color:#0000e6; '>'#zoomsaic_demo_2'</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>zoomsaic<span style='color:#808030; '>(</span><span style='color:#800080; '>{</span>
+                            width <span style='color:#800080; '>:</span> <span style='color:#008c00; '>780</span><span style='color:#808030; '>,</span> <span style='color:#696969; '>// container width</span>
+                            columns <span style='color:#800080; '>:</span> <span style='color:#008c00; '>4</span> <span style='color:#696969; '>// columns per page</span>
+                        <span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                    <span style='color:#800080; '>}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+                <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>/</span>script<span style='color:#808030; '>></span>
+                </pre>
+                </code>
+                <h4>3. CSS</h4>
+                <p>include zoomsaic.css into your webpage</p>
+                <code>
+                <pre>
+                <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>link</span><span style='color:#274796; '> </span><span style='color:#074726; '>href</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"css/zoomsaic.css"</span><span style='color:#274796; '> </span><span style='color:#074726; '>rel</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"stylesheet"</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"text/css"</span><span style='color:#274796; '> </span><span style='color:#074726; '>media</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"screen"</span><span style='color:#274796; '> </span><span style='color:#a65700; '>/></span>
+                </pre>
+                </code>
+                <br>
+                <hr>
+                <h3>Demo 1</h3>
+                <ul>
+                    <li>1 row</li>
+                    <li>4 columns</li>
+                    <li>infinite pages</li>
+                    <li>all options</li>
+                </ul>
+                <div id="zoomsaic_demo_1" class="zoomsaic">
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-html5.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>HTML5</h4>
+                                <p>HTML5 is a markup language used for structuring and presenting content for the World Wide Web and a core technology of the Internet. It is the fifth revision of the HTML standard (created in 1990 and standardized as HTML 4 as of 1997) and, as of December 2012, is a candidate recommendation of the World Wide Web Consortium (W3C).</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/HTML5">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-css3.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>CSS</h4>
+                                <p>Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language. While most often used to style web pages and interfaces written in HTML and XHTML, the language can be applied to any kind of XML document, including plain XML, SVG and XUL.</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Css3#CSS_3">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-js.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>Javascript</h4>          
+                                <p>JavaScript (JS) is an interpreted computer programming language. As part of web browsers, implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed.</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Javascript">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-jquery.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>jQuery</h4>          
+                                <p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It was released in January 2006 at BarCamp NYC by John Resig. It is currently developed by a team of developers led by Dave Methvin. Used by over 65% of the 10,000 most visited websites, jQuery is the most popular JavaScript library in use today</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Jquery">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-php.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>PHP</h4>          
+                                <p>PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language. PHP is now installed on more than 244 million websites and 2.1 million web servers.</p>                          
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/PHP">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-mysql.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>MySQL</h4>          
+                                <p>MySQL is (as of July 2013) the world's second most widely used open-source relational database management system (RDBMS). It is named after co-founder Michael Widenius's daughter, My. The SQL phrase stands for Structured Query Language.</p>                     
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Mysql">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-less.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>LESS</h4>          
+                                <p>LESS (Leaner CSS) is a dynamic stylesheet language designed by Alexis Sellier. It is influenced by Sass and has influenced the newer "SCSS" syntax of Sass, which adapted its CSS-like block formatting syntax.</p>                     
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Less_css">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-ubuntu.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>Ubuntu</h4>          
+                                <p>Ubuntu is a Debian-based Linux operating system, with Unity as its default desktop environment (formerly GNOME). It is based on free software and named after the Southern African philosophy of ubuntu (literally, "human-ness"), which often is translated as "humanity towards others" or "the belief in a universal bond of sharing that connects all humanity".</p>                     
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Ubuntu_(operating_system)">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <h3>Demo 2</h3>
+                <ul>
+                    <li>infinite rows</li>
+                    <li>auto columns</li>
+                    <li>1 page</li>
+                    <li>required options</li>
+                </ul>
+                <div id="zoomsaic_demo_2" class="zoomsaic">
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-html5.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>HTML5</h4>
+                                <p>HTML5 is a markup language used for structuring and presenting content for the World Wide Web and a core technology of the Internet. It is the fifth revision of the HTML standard (created in 1990 and standardized as HTML 4 as of 1997) and, as of December 2012, is a candidate recommendation of the World Wide Web Consortium (W3C).</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/HTML5">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-css3.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>CSS</h4>
+                                <p>Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language. While most often used to style web pages and interfaces written in HTML and XHTML, the language can be applied to any kind of XML document, including plain XML, SVG and XUL.</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Css3#CSS_3">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-js.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>Javascript</h4>          
+                                <p>JavaScript (JS) is an interpreted computer programming language. As part of web browsers, implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed.</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Javascript">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-jquery.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>jQuery</h4>          
+                                <p>jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It was released in January 2006 at BarCamp NYC by John Resig. It is currently developed by a team of developers led by Dave Methvin. Used by over 65% of the 10,000 most visited websites, jQuery is the most popular JavaScript library in use today</p>
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Jquery">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-php.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>PHP</h4>          
+                                <p>PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language. PHP is now installed on more than 244 million websites and 2.1 million web servers.</p>                          
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/PHP">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-mysql.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>MySQL</h4>          
+                                <p>MySQL is (as of July 2013) the world's second most widely used open-source relational database management system (RDBMS). It is named after co-founder Michael Widenius's daughter, My. The SQL phrase stands for Structured Query Language.</p>                     
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Mysql">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-less.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>LESS</h4>          
+                                <p>LESS (Leaner CSS) is a dynamic stylesheet language designed by Alexis Sellier. It is influenced by Sass and has influenced the newer "SCSS" syntax of Sass, which adapted its CSS-like block formatting syntax.</p>                     
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Less_css">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoomsaic-element">
+                        <div class="zoomsaic-before">                                                                        
+                            <figure style="background-image:url('img/icon-ubuntu.png');"></figure>
+                        </div>
+                        <div class="zoomsaic-after" style="display:none;">
+                            <div class="fancy-bg">
+                                <h4>Ubuntu</h4>          
+                                <p>Ubuntu is a Debian-based Linux operating system, with Unity as its default desktop environment (formerly GNOME). It is based on free software and named after the Southern African philosophy of ubuntu (literally, "human-ness"), which often is translated as "humanity towards others" or "the belief in a universal bond of sharing that connects all humanity".</p>                     
+                                <a target="_blank" href="http://en.wikipedia.org/wiki/Ubuntu_(operating_system)">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <small>contact me at <a title="jonathan.argentiero@gmail.com" href="mailto:jonathan.argentiero@gmail.com">jonathan.argentiero@gmail.com</a></small>
+            </article>
+        </section>
+        <script type="text/javascript">
+            $(document).ready(function(){    
+                $('#zoomsaic_demo_1').zoomsaic({
+                    columns : 4, // (REQUIRED) columns per page
+                    width : 780, // (REQUIRED) container width
+                    height : 195, // container height
+                    elements_per_page : 4, // total elements per page
+                    box_width : 195, // before zoom box width
+                    box_height : 195, // before zoom box height
+                    max_box_width : 260, // after zoom box width
+                    max_box_height : 260, // after zoom box height
+                    easein : "linear", // easing of the zoom animation, supports additional effects from jquery easing/jquery ui
+                    easout : "linear", // easing of the zoom animation, supports additional effects from jquery easing/jquery ui
+                    pagination : true, // pagination enabled / disabled
+                    navigator : true, // pager enabled / disabled
+                    direction: "left", // direction of the pager animation
+                    easepage : "easeInExpo" // easing of the pager animation, supports additional effects from jquery easing/jquery ui
+                });
+                $('#zoomsaic_demo_2').zoomsaic({
+                    width : 780, // container width
+                    columns : 4 // columns per page
+                });
+            });
+        </script>
+    </body>
+</html>
+ 

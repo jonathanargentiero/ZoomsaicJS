@@ -1,0 +1,93 @@
+html,body{
+    margin: 0;
+}
+body{
+    background: #e0e0e0 url('../img/background.png') repeat repeat 0 0;
+    color: #333;
+    font-family: arial, sans-serif;
+    overflow-x: hidden;
+}
+section,article,figure{
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+section{
+    margin: 0 auto;
+    max-width: 780px;
+    width: 100%;
+    padding: 50px 0;    
+}
+h1{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 75px;
+    line-height: 120%;
+    margin: 0;
+}
+h2{
+    text-align: center;
+    margin: 0 0 20px;
+    font-size: 20px;
+    line-height: 120%;
+    color: rgb(111, 64, 64);
+}
+h3{    
+    margin-bottom: 0;
+}
+h4{    
+    margin-bottom: 0px;
+    font-size: 14px;
+}
+h4 + p{
+    margin-top: 0;
+}
+.red{
+    color: rgb(189, 72, 72);
+}
+.fancy-bg{
+    width: 100%;
+    height: 100%;
+    background: #ccc url('../img/background-after.png') repeat repeat 0 0;
+}
+.fancy-bg h4{    
+    margin: 0;
+    font-size: 30px;
+    text-align: center;
+    padding: 10px 0;
+    color: #333;
+}
+.fancy-bg p{  
+    margin: 0;
+    padding: 0 10px;
+    color: #333;
+    font-size: 13px;
+    line-height: 18px;
+}
+.fancy-bg a{
+    color: #333;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0 10px;
+}
+.fancy-bg a:hover{
+    color: #555;
+}
+code{
+    display: block;
+    background: white;
+    border: 1px solid #333;
+    width: 780px;
+    overflow: hidden;
+    position: relative;
+}
+pre{    
+    padding-top: 10px;
+    margin-left: -110px;
+}
+small a{
+    color: #333;
+}
+small a:hover{
+    color: rgb(189, 72, 72);
+}
