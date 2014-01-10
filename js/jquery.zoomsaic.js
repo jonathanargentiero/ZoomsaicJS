@@ -1,3 +1,9 @@
+/* 
+ * Zoomsaic JS - v1.0
+ * Author: Jonathan Argentiero
+ * Github project: https://github.com/jonathanargentiero/ZoomsaicJS
+ * use the plugin as you please :)
+ */
 (function (a) {
     a.fn.zoomsaic = function (b) {
         if(b.height === undefined){b.height=0;}
